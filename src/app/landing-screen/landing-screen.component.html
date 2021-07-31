@@ -1,0 +1,29 @@
+<div class="landing-box">
+
+<div class="well">
+    <h4>Enter a zipcode:</h4>
+    <input class="form-control" placeholder="Zipcode" type="text" [formControl]="locationId" id="addLocation">
+    &nbsp; &nbsp;
+    <button class="btn btn-primary mt-3" id="addLocationBtn" (click)="saveLocation()">
+        Add location
+    </button>
+</div>
+</div>
+
+<div  class="landing-box" *ngFor="let Obj of locationArry">
+  <h5>{{Obj?.APIDatas?.name}}</h5> <button class="x-btn" (click)="selectedData(Obj)">X</button>
+    <div class="row">
+        <div class="col-sm-6 mt-5">Current Condition:{{Obj?.APIDatas?.weather[0]?.Clouds}}<br>
+          <div class="mt-3">Temperature: {{Obj?.APIDatas?.main?.temp}}</div>
+          <div class="mt-3"> Max Today: {{Obj?.APIDatas?.main?.temp_max}} -
+            Min Today: {{Obj?.APIDatas?.main?.temp_min}}</div>
+        </div>
+        <div class="col-sm-6">
+            <i *ngIf="Obj?.APIDatas?.weather[0]?.main == 'Clouds'"><img src="../../assets/clouds.png" alt=""></i>
+            <a *ngIf="Obj?.APIDatas?.weather[0]?.main == 'Clear'"><img src="../../assets/sun.png" alt=""></a>
+            <a *ngIf="Obj?.APIDatas?.weather[0]?.main == 'Rain'"><img src="../../assets/rain.png" alt=""></a>
+            <a *ngIf="Obj?.APIDatas?.weather[0]?.main == 'Snow'"><img src="../../assets/snow.png" alt=""></a>
+        </div>
+    </div>
+</div>
+ <br><br><br>

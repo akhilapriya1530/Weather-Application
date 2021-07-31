@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <div class="text-right"><button (click)="clickBack()">Back</button></div>
+   <h3 style="font-size:20px;"> {{APIData?.city?.name}}</h3>
+    <div class="col-12 weather-border">
+      <div class="row" *ngFor="let data of finalArryList">
+
+            <div class="col-8 box">
+                {{getDayByDate(data)}}: {{data?.weather[0]?.main}} - High: {{data?.main?.temp_max}} - Low:
+                {{data?.main?.temp_min}}
+            </div><br>
+            <div class="col-4">
+                <i *ngIf="data?.weather[0]?.main == 'Clouds'"><img  src="../../assets/clouds.png" alt=""></i>
+                <a *ngIf="data?.weather[0]?.main == 'Clear'"><img src="../../assets/sun.png" alt=""></a>
+                <a *ngIf="data?.weather[0]?.main == 'Rain'"><img src="../../assets/rain.png" alt=""></a>
+                <a *ngIf="data?.weather[0]?.main == 'Snow'"><img src="../../assets/snow.png" alt=""></a>
+            </div>
+        </div>
+
+    </div>
